@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&display=swap');
+
+:root {
+    --bg:             #111110;
+    --surface:        #1c1c1a;
+    --border:         #2e2e2b;
+    --accent:         #e8e8e4;
+    --text-primary:   #e8e8e4;
+    --text-secondary: #a8a8a0;
+    --text-muted:     #62625a;
+    --debug-bg:       #161614;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Geist Mono', 'Fira Code', 'Cascadia Code', monospace;
+    -webkit-font-smoothing: antialiased;
+}

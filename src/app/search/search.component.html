@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="search-wrapper">
+    <span class="search-icon">⌕</span>
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Search products…"
+      [value]="query()"
+      (input)="query.set($event.target.value)"
+    />
+  </div>
+  <div class="results-area">
+    <h3>Products</h3>
+
+    <!-- @switch (products().status) {
+      @case ('idle') {
+        <div class="state idle">
+          Start typing to search products
+        </div>
+      }
+      @case ('loading') {
+        <div class="state loading">
+          <span class="spinner"></span>
+          <span>Fetching products…</span>
+        </div>
+      }
+      @case ('data') {
+        <ul class="results-list">
+          @for (product of products().data; track product) {
+            <li class="result-item">
+              <div><strong>{{ product.title }}</strong></div> <div>{{ product.price | currency }}</div>
+            </li>
+          }
+        </ul>
+      }
+    } -->
+
+    @if (query()) {
+      @if (products.isLoading()) {
+        <div class="state loading">
+          <span class="spinner"></span>
+          <span>Fetching products…</span>
+        </div>
+      } @else {
+        <ul class="results-list">
+          @for (product of products.value(); track product) {
+            <li class="result-item">
+              <div><strong>{{ product.title }}</strong></div> <div>{{ product.price | currency }}</div>
+            </li>
+          }
+        </ul>
+      }
+    } @else {
+      <div class="state idle">
+        Start typing to search products
+      </div>
+    }
+  </div>
+</div>
