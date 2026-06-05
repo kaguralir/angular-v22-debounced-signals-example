@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: PrepngoThemePreset,
         options: {
-          darkModeSelector: false,
+          darkModeSelector: '.app-dark', // class that never exists → always light
           cssLayer: false,
         },
       },

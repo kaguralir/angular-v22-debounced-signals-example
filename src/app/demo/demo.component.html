@@ -1,56 +1,65 @@
 <div class="demo-page">
-  <h1 class="page-title">UI Components — Demo</h1>
 
-  <!-- ───── Buttons ───── -->
+  <!-- ══════════════════════════════════════
+       BUTTONS
+  ══════════════════════════════════════ -->
   <section class="demo-section">
-    <h2 class="section-label">Buttons / primary</h2>
-    <p-button label="Scanner un client" icon="pi pi-qrcode" />
+    <p class="section-label">Buttons / primary</p>
+    <p-button label="Scanner un client" icon="pi pi-qrcode" styleClass="btn-primary" />
   </section>
 
   <section class="demo-section">
-    <h2 class="section-label">Buttons / secondary</h2>
-    <p-button label="Vente en direct" [outlined]="true" styleClass="btn-secondary-outlined" />
+    <p class="section-label">Buttons / secondary</p>
+    <p-button label="Vente en direct" styleClass="btn-secondary" />
   </section>
 
   <section class="demo-section">
-    <h2 class="section-label">Buttons / disabled</h2>
-    <p-button label="Scanner un client" icon="pi pi-qrcode" [disabled]="true" />
+    <p class="section-label">Buttons / disabled</p>
+    <p-button label="Scanner un client" icon="pi pi-qrcode" styleClass="btn-primary" [disabled]="true" />
   </section>
 
-  <!-- ───── Search ───── -->
+  <!-- ══════════════════════════════════════
+       SEARCH
+  ══════════════════════════════════════ -->
   <section class="demo-section">
-    <h2 class="section-label">Search</h2>
-    <div class="search-box">
-      <i class="pi pi-search"></i>
-      <input pInputText type="text" placeholder="Chercher un client..." [(ngModel)]="searchQuery" />
+    <p class="section-label">Search</p>
+    <div class="search-wrapper">
+      <i class="pi pi-search search-icon"></i>
+      <input pInputText type="text" placeholder="Chercher un client..." [(ngModel)]="searchQuery" class="search-input" />
     </div>
   </section>
 
-  <!-- ───── Tags ───── -->
+  <!-- ══════════════════════════════════════
+       TAGS
+  ══════════════════════════════════════ -->
   <section class="demo-section">
-    <h2 class="section-label">Tags</h2>
-    <div class="row gap">
-      <p-tag value="Modifiée"  severity="secondary" />
-      <p-tag value="En cours"  severity="info" />
-      <p-tag value="Réglée"    severity="success" />
-      <p-tag value="Non réglée" severity="danger" />
+    <p class="section-label">Tags</p>
+    <div class="tags-row">
+      <p-tag value="Modifiée"   severity="secondary" />
+      <p-tag value="En cours"   severity="info" />
+      <p-tag value="Réglée"     severity="success" />
+      <p-tag value="Non réglée" severity="danger" styleClass="tag-danger-outlined" />
     </div>
   </section>
 
-  <!-- ───── Onglets ───── -->
+  <!-- ══════════════════════════════════════
+       ONGLETS
+  ══════════════════════════════════════ -->
   <section class="demo-section">
-    <h2 class="section-label">Onglets</h2>
+    <p class="section-label">Onglets</p>
     <div class="tab-bar">
       <button class="tab" [class.active]="activeTab() === 'total'"    (click)="activeTab.set('total')">Préparation totale</button>
       <button class="tab" [class.active]="activeTab() === 'en-cours'" (click)="activeTab.set('en-cours')">En cours</button>
     </div>
   </section>
 
-  <!-- ───── Bloc / état ───── -->
+  <!-- ══════════════════════════════════════
+       BLOC / ÉTAT
+  ══════════════════════════════════════ -->
   <section class="demo-section">
-    <h2 class="section-label">Bloc / état</h2>
+    <p class="section-label">Bloc / état</p>
     <div class="status-bloc">
-      <i class="pi pi-qrcode"></i>
+      <i class="pi pi-qrcode status-icon"></i>
       <div>
         <div class="status-title">Prête à être scannée</div>
         <div class="status-sub">4 produits à valider</div>
@@ -58,179 +67,170 @@
     </div>
   </section>
 
-  <!-- ───── Emplacement / drop ───── -->
+  <!-- ══════════════════════════════════════
+       EMPLACEMENT / DROP
+  ══════════════════════════════════════ -->
   <section class="demo-section">
-    <h2 class="section-label">Emplacement (CTA – drop)</h2>
-    <div class="loc-label-row">emplacement</div>
-    <p-select
-      [options]="locationOptions"
-      [(ngModel)]="selectedLocation"
-      styleClass="loc-select"
-    >
+    <p class="section-label">Emplacement (CTA – drop)</p>
+    <span class="field-label">emplacement</span>
+    <p-select [options]="locationOptions" [(ngModel)]="selectedLocation" styleClass="loc-select">
       <ng-template pTemplate="selectedItem" let-v>
-        <span class="loc-item"><i class="pi pi-map-marker"></i> {{ v }}</span>
+        <div class="loc-item"><i class="pi pi-map-marker"></i><span>{{ v }}</span></div>
       </ng-template>
       <ng-template pTemplate="item" let-o>{{ o }}</ng-template>
     </p-select>
   </section>
 
-  <!-- ───── Bloc / details produit ───── -->
+  <!-- ══════════════════════════════════════
+       BLOC / DETAILS PRODUIT
+  ══════════════════════════════════════ -->
   <section class="demo-section">
-    <h2 class="section-label">Bloc / details produit</h2>
-    <p-card styleClass="product-card">
-      <ng-template pTemplate="content">
-        <p-tag value="Qte modifiée" severity="secondary" styleClass="card-tag" />
-        <div class="row space-between mt-8">
-          <span class="bold">Sac de ciment Portland</span>
-          <span class="qty-row"><span class="qty-orig">x1</span> <span class="bold">x10</span></span>
+    <p class="section-label">Bloc / details produit</p>
+    <div class="card">
+      <p-tag value="Qte modifiée" severity="secondary" styleClass="mb-8" />
+      <div class="card-row">
+        <span class="text-bold">Sac de ciment Portland</span>
+        <div class="qty-group">
+          <span class="qty-orig">x1</span>
+          <span class="text-bold">x10</span>
         </div>
-        <div class="row space-between mt-8">
-          <span class="muted">EU440</span>
-          <p-select
-            [options]="locationOptions"
-            [(ngModel)]="selectedLocation"
-            styleClass="inline-select"
-          >
-            <ng-template pTemplate="selectedItem" let-v>
-              <span class="loc-item"><i class="pi pi-map-marker"></i> {{ v }}</span>
-            </ng-template>
-            <ng-template pTemplate="item" let-o>{{ o }}</ng-template>
-          </p-select>
-        </div>
-      </ng-template>
-    </p-card>
+      </div>
+      <div class="card-row mt-6">
+        <span class="text-muted">EU440</span>
+        <p-select [options]="locationOptions" [(ngModel)]="selectedLocation" styleClass="card-loc-select">
+          <ng-template pTemplate="selectedItem" let-v>
+            <div class="loc-item"><i class="pi pi-map-marker"></i><span>{{ v }}</span></div>
+          </ng-template>
+          <ng-template pTemplate="item" let-o>{{ o }}</ng-template>
+        </p-select>
+      </div>
+    </div>
   </section>
 
-  <!-- ───── Bloc / commande globale ───── -->
+  <!-- ══════════════════════════════════════
+       BLOC / COMMANDE GLOBALE
+  ══════════════════════════════════════ -->
   <section class="demo-section">
-    <h2 class="section-label">Bloc / commande globale</h2>
-    <div class="order-list">
+    <p class="section-label">Bloc / commande globale</p>
+    <div class="group-container">
 
-      <!-- Plain order -->
-      <p-card styleClass="order-card">
-        <ng-template pTemplate="content">
-          <div class="row space-between">
-            <span class="muted">08:15</span>
-            <span class="bold">A12</span>
-          </div>
-          <div class="bold mt-4">Dupont Construction · CLNT0001</div>
-          <div class="row space-between mt-4">
-            <span class="muted small"><i class="pi pi-box"></i> 4 produits</span>
-            <span class="bold">A12</span>
-          </div>
-        </ng-template>
-      </p-card>
+      <!-- plain -->
+      <div class="card">
+        <div class="card-row">
+          <span class="text-muted">08:15</span>
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+        <div class="text-bold mt-6">Dupont Construction · CLNT0001</div>
+        <div class="card-row mt-6">
+          <span class="text-muted"><i class="pi pi-box mr-4"></i>4 produits</span>
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+      </div>
 
-      <!-- En cours order -->
-      <p-card styleClass="order-card">
-        <ng-template pTemplate="content">
-          <div class="row space-between">
-            <span class="row gap-sm"><span class="dot-blue"></span><span class="muted">08:15</span></span>
-            <p-tag value="En cours" severity="info" />
-            <span class="bold">A12</span>
-          </div>
-          <div class="bold mt-4">Dupont Construction · CLNT0001</div>
-          <div class="row space-between mt-4">
-            <span class="muted small"><i class="pi pi-box"></i> 4 produits</span>
-            <span class="bold">A12</span>
-          </div>
-        </ng-template>
-      </p-card>
+      <!-- en cours -->
+      <div class="card">
+        <div class="card-row">
+          <span class="dot-blue"></span>
+          <span class="text-muted">08:15</span>
+          <p-tag value="En cours" severity="info" styleClass="ml-8" />
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+        <div class="text-bold mt-6">Dupont Construction · CLNT0001</div>
+        <div class="card-row mt-6">
+          <span class="text-muted"><i class="pi pi-box mr-4"></i>4 produits</span>
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+      </div>
 
-      <!-- Modifiée order -->
-      <p-card styleClass="order-card">
-        <ng-template pTemplate="content">
-          <div class="row space-between">
-            <span class="muted">08:15</span>
-            <p-tag value="Modifiée" severity="secondary" />
-            <span class="bold">A12</span>
-          </div>
-          <div class="bold mt-4">Dupont Construction · CLNT0001</div>
-          <div class="row space-between mt-4">
-            <span class="muted small"><i class="pi pi-box"></i> 4 produits</span>
-            <span class="bold">A12</span>
-          </div>
-        </ng-template>
-      </p-card>
+      <!-- modifiée -->
+      <div class="card">
+        <div class="card-row">
+          <span class="text-muted">08:15</span>
+          <p-tag value="Modifiée" severity="secondary" styleClass="ml-8" />
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+        <div class="text-bold mt-6">Dupont Construction · CLNT0001</div>
+        <div class="card-row mt-6">
+          <span class="text-muted"><i class="pi pi-box mr-4"></i>4 produits</span>
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+      </div>
 
     </div>
   </section>
 
-  <!-- ───── Bloc / sélection produits ───── -->
+  <!-- ══════════════════════════════════════
+       BLOC / SÉLECTION PRODUITS
+  ══════════════════════════════════════ -->
   <section class="demo-section">
-    <h2 class="section-label">Bloc / sélection produits</h2>
-    <div class="selection-list">
+    <p class="section-label">Bloc / sélection produits</p>
+    <div class="group-container">
 
-      <!-- Unchecked, no tag -->
-      <p-card styleClass="sel-card">
-        <ng-template pTemplate="content">
-          <div class="row space-between">
-            <div class="row gap-sm">
-              <p-checkbox [(ngModel)]="checked1" [binary]="true" />
-              <span class="bold">Sac de ciment Portland</span>
-            </div>
-            <span class="row gap-sm"><span class="bold">x10</span> <i class="pi pi-pencil edit-icon"></i></span>
+      <!-- unchecked, no tag -->
+      <div class="card sel-card">
+        <div class="card-row">
+          <p-checkbox [(ngModel)]="checked1" [binary]="true" />
+          <span class="text-bold ml-8">Sac de ciment Portland</span>
+          <div class="qty-group ml-auto">
+            <span class="text-bold">x10</span>
+            <i class="pi pi-pencil edit-icon"></i>
           </div>
-          <div class="row space-between mt-8">
-            <span class="muted">PROD-001</span>
-            <span class="loc-item muted"><i class="pi pi-map-marker"></i> Allée A-03 (4)</span>
-          </div>
-        </ng-template>
-      </p-card>
+        </div>
+        <div class="card-row mt-8">
+          <span class="text-muted">PROD-001</span>
+          <div class="loc-item ml-auto text-muted"><i class="pi pi-map-marker"></i><span>Allée A-03 (4)</span></div>
+        </div>
+      </div>
 
-      <!-- Unchecked, with tag -->
-      <p-card styleClass="sel-card">
-        <ng-template pTemplate="content">
-          <p-tag value="Qte modifiée" severity="secondary" styleClass="card-tag" />
-          <div class="row space-between mt-8">
-            <div class="row gap-sm">
-              <p-checkbox [(ngModel)]="checked2" [binary]="true" />
-              <span class="bold">Sac de ciment Portland</span>
-            </div>
-            <span class="row gap-sm"><span class="qty-orig">x2</span> <span class="bold">x10</span> <i class="pi pi-pencil edit-icon"></i></span>
+      <!-- unchecked, with tag (Qte modifiée) -->
+      <div class="card sel-card">
+        <p-tag value="Qte modifiée" severity="secondary" styleClass="mb-8" />
+        <div class="card-row">
+          <p-checkbox [(ngModel)]="checked2" [binary]="true" />
+          <span class="text-bold ml-8">Sac de ciment Portland</span>
+          <div class="qty-group ml-auto">
+            <span class="qty-orig">x2</span>
+            <span class="text-bold">x10</span>
+            <i class="pi pi-pencil edit-icon"></i>
           </div>
-          <div class="row space-between mt-8">
-            <span class="muted">PROD-001</span>
-            <span class="loc-item muted"><i class="pi pi-map-marker"></i> Allée A-03</span>
-          </div>
-        </ng-template>
-      </p-card>
+        </div>
+        <div class="card-row mt-8">
+          <span class="text-muted">PROD-001</span>
+          <div class="loc-item ml-auto text-muted"><i class="pi pi-map-marker"></i><span>Allée A-03</span></div>
+        </div>
+      </div>
 
-      <!-- Checked, no tag -->
-      <p-card styleClass="sel-card checked">
-        <ng-template pTemplate="content">
-          <div class="row space-between">
-            <div class="row gap-sm">
-              <p-checkbox [(ngModel)]="checked3" [binary]="true" />
-              <span class="bold">Sac de ciment Portland</span>
-            </div>
-            <span class="bold">x10</span>
-          </div>
-          <div class="row space-between mt-8">
-            <span class="muted">PROD-001</span>
-            <span class="loc-item muted"><i class="pi pi-map-marker"></i> Allée A-03</span>
-          </div>
-        </ng-template>
-      </p-card>
+      <!-- checked, no tag -->
+      <div class="card sel-card sel-card--checked">
+        <div class="card-row">
+          <p-checkbox [(ngModel)]="checked3" [binary]="true" />
+          <span class="text-bold ml-8">Sac de ciment Portland</span>
+          <span class="text-bold ml-auto">x10</span>
+        </div>
+        <div class="card-row mt-8">
+          <span class="text-muted">PROD-001</span>
+          <div class="loc-item ml-auto text-muted"><i class="pi pi-map-marker"></i><span>Allée A-03</span></div>
+        </div>
+      </div>
 
-      <!-- Checked, with tag -->
-      <p-card styleClass="sel-card checked">
-        <ng-template pTemplate="content">
-          <p-tag value="Qte modifiée" severity="secondary" styleClass="card-tag" />
-          <div class="row space-between mt-8">
-            <div class="row gap-sm">
-              <p-checkbox [(ngModel)]="checked4" [binary]="true" />
-              <span class="bold">Sac de ciment Portland</span>
-            </div>
-            <span class="row gap-sm"><span class="qty-orig">x2</span> <span class="bold">x10</span></span>
+      <!-- checked, with tag -->
+      <div class="card sel-card sel-card--checked">
+        <p-tag value="Qte modifiée" severity="secondary" styleClass="mb-8" />
+        <div class="card-row">
+          <p-checkbox [(ngModel)]="checked4" [binary]="true" />
+          <span class="text-bold ml-8">Sac de ciment Portland</span>
+          <div class="qty-group ml-auto">
+            <span class="qty-orig">x2</span>
+            <span class="text-bold">x10</span>
           </div>
-          <div class="row space-between mt-8">
-            <span class="muted">PROD-001</span>
-            <span class="loc-item muted"><i class="pi pi-map-marker"></i> Allée A-03</span>
-          </div>
-        </ng-template>
-      </p-card>
+        </div>
+        <div class="card-row mt-8">
+          <span class="text-muted">PROD-001</span>
+          <div class="loc-item ml-auto text-muted"><i class="pi pi-map-marker"></i><span>Allée A-03</span></div>
+        </div>
+      </div>
 
     </div>
   </section>
+
 </div>
