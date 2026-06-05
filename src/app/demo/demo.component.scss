@@ -1,57 +1,45 @@
 .demo-page {
-  max-width: 720px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 32px 24px 64px;
+  padding: 32px 20px 80px;
 }
 
-.demo-title {
-  font-size: 1.5rem;
+.page-title {
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #1D1D1D;
   margin: 0 0 32px;
+  color: #1D1D1D;
 }
 
 .demo-section {
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
-.section-title {
-  font-size: 0.8rem;
+.section-label {
+  font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   color: #84858C;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 }
 
-.demo-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+/* ── Layout helpers ── */
+.row          { display: flex; align-items: center; }
+.space-between{ justify-content: space-between; }
+.gap          { gap: 8px; }
+.gap-sm       { gap: 6px; }
+.mt-4         { margin-top: 4px; }
+.mt-8         { margin-top: 8px; }
+.bold         { font-weight: 700; font-size: 0.92rem; color: #1D1D1D; }
+.muted        { color: #696A71; font-size: 0.85rem; }
+.small        { font-size: 0.82rem; }
 
-  &.narrow {
-    max-width: 320px;
-  }
-
-  :host ::ng-deep .p-button {
-    width: auto;
-    min-width: 200px;
-  }
-}
-
-.demo-hint {
-  margin: 8px 0 0;
-  font-size: 0.82rem;
-  color: #84858C;
-}
-
-/* Search input */
-.search-wrapper {
+/* ── Search ── */
+.search-box {
   position: relative;
-  width: 100%;
 
-  .search-icon {
+  .pi-search {
     position: absolute;
     left: 14px;
     top: 50%;
@@ -61,46 +49,164 @@
     pointer-events: none;
   }
 
-  .search-input {
+  input[pInputText] {
     width: 100%;
     padding-left: 38px !important;
     border-radius: 16px !important;
     border: none !important;
     background: #E6E6E7 !important;
-    color: #1D1D1D;
     font-size: 0.9rem;
 
     &::placeholder { color: #84858C; }
-    &:focus { outline: none; box-shadow: 0 0 0 2px #F58220; }
+    &:focus { box-shadow: 0 0 0 2px #F58220 !important; }
   }
 }
 
-/* Secondary outlined button override */
-:host ::ng-deep .outlined-secondary {
-  border-color: #F58220 !important;
-  color: #E66410 !important;
-  background: transparent !important;
-  width: auto !important;
+/* ── Tab bar ── */
+.tab-bar {
+  display: flex;
+  background: #E6E6E7;
+  border-radius: 16px;
+  padding: 4px;
+  gap: 2px;
+}
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #696A71;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: inherit;
+
+  &.active {
+    background: #F58220;
+    color: #fff;
+    font-weight: 700;
+  }
 }
 
-/* Order list */
-.order-list {
+/* ── Status bloc ── */
+.status-bloc {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-width: 380px;
-  padding: 12px;
-  border: 1.5px dashed #a5b4fc;
+  align-items: center;
+  gap: 14px;
+  background: #BBDEFB;
   border-radius: 16px;
+  padding: 16px 20px;
+
+  .pi-qrcode { font-size: 1.6rem; color: #1D1D1D; }
+
+  .status-title { font-weight: 700; font-size: 0.95rem; color: #1D1D1D; }
+  .status-sub   { font-size: 0.82rem; color: #4D4D51; margin-top: 2px; }
 }
 
-/* Selection list */
-.selection-list {
+/* ── Location drop ── */
+.loc-label-row {
+  font-size: 0.82rem;
+  color: #84858C;
+  margin-bottom: 4px;
+}
+.loc-item {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-width: 420px;
-  padding: 12px;
-  border: 1.5px dashed #a5b4fc;
-  border-radius: 16px;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.88rem;
+
+  .pi-map-marker { color: #84858C; font-size: 0.82rem; }
+}
+
+/* ── PrimeNG p-card overrides ── */
+:host ::ng-deep {
+  /* product / order / selection cards */
+  .p-card.product-card,
+  .p-card.order-card,
+  .p-card.sel-card {
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+
+    .p-card-body { padding: 14px 16px; }
+    .p-card-content { padding: 0; }
+  }
+
+  /* checked selection card */
+  .p-card.sel-card.checked {
+    background: #F0FAF4;
+    border: 1.5px solid #27AB5E;
+  }
+
+  /* order list spacing */
+  .order-list,
+  .selection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1.5px dashed #a5b4fc;
+    border-radius: 16px;
+    padding: 10px;
+  }
+
+  /* tag at top of card */
+  .card-tag { margin-bottom: 6px; }
+
+  /* inline select (inside card footer) */
+  .p-select.inline-select {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    min-width: unset;
+
+    .p-select-label { padding: 0; font-size: 0.85rem; }
+    .p-select-dropdown { width: 20px; }
+  }
+
+  /* location top-level select */
+  .p-select.loc-select {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    .p-select-label { padding: 4px 0; font-size: 0.9rem; }
+  }
+
+  /* checkbox green when checked */
+  .p-checkbox.p-checkbox-checked .p-checkbox-box {
+    background: #27AB5E !important;
+    border-color: #27AB5E !important;
+    border-radius: 6px !important;
+  }
+  .p-checkbox .p-checkbox-box {
+    border-radius: 6px !important;
+  }
+
+  /* secondary outlined button */
+  .p-button.btn-secondary-outlined {
+    border-color: #F58220 !important;
+    color: #E66410 !important;
+    background: transparent !important;
+    width: auto !important;
+  }
+}
+
+/* misc */
+.qty-orig {
+  color: #84858C;
+  font-size: 0.82rem;
+  text-decoration: line-through;
+}
+.edit-icon {
+  color: #F58220;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.dot-blue {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2196F3;
+  flex-shrink: 0;
 }
