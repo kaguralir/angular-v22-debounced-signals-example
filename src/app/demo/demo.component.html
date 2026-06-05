@@ -10,7 +10,9 @@
 
   <section class="demo-section">
     <p class="section-label">Buttons / secondary</p>
-    <p-button label="Vente en direct" styleClass="btn-secondary" />
+    <div class="btn-inline">
+      <p-button label="Vente en direct" [outlined]="true" />
+    </div>
   </section>
 
   <section class="demo-section">
@@ -23,10 +25,10 @@
   ══════════════════════════════════════ -->
   <section class="demo-section">
     <p class="section-label">Search</p>
-    <div class="search-wrapper">
-      <i class="pi pi-search search-icon"></i>
-      <input pInputText type="text" placeholder="Chercher un client..." [(ngModel)]="searchQuery" class="search-input" />
-    </div>
+    <p-iconfield styleClass="search-field">
+      <p-inputicon styleClass="pi pi-search" />
+      <input pInputText type="text" placeholder="Chercher un client..." [(ngModel)]="searchQuery" />
+    </p-iconfield>
   </section>
 
   <!-- ══════════════════════════════════════
@@ -50,6 +52,7 @@
     <div class="tab-bar">
       <button class="tab" [class.active]="activeTab() === 'total'"    (click)="activeTab.set('total')">Préparation totale</button>
       <button class="tab" [class.active]="activeTab() === 'en-cours'" (click)="activeTab.set('en-cours')">En cours</button>
+      <!-- tabs size to content, not forced equal-width -->
     </div>
   </section>
 

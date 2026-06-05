@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 import { TagModule } from 'primeng/tag';
 import { SelectModule } from 'primeng/select';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -13,7 +15,8 @@ import { CardModule } from 'primeng/card';
   standalone: true,
   imports: [
     CommonModule, FormsModule,
-    ButtonModule, InputTextModule, TagModule, SelectModule, CheckboxModule, CardModule,
+    ButtonModule, InputTextModule, IconFieldModule, InputIconModule,
+    TagModule, SelectModule, CheckboxModule, CardModule,
   ],
   templateUrl: './demo.component.html',
   styleUrl: './demo.component.scss',

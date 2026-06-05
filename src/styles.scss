@@ -33,7 +33,9 @@ body {
 .p-button.p-button-outlined {
   width: auto !important;
   background: transparent !important;
-  border-width: 1.5px !important;
+  border: 1.5px solid #F58220 !important;
+  color: #E66410 !important;
+  padding: 13px 20px !important;
 }
 
 .p-button:disabled,
@@ -63,6 +65,23 @@ body {
 
   &::placeholder { color: #84858C !important; }
   &:focus { box-shadow: 0 0 0 2px #F58220 !important; }
+}
+
+/* ════════════════════════════════════════════════
+   ICON FIELD (search input with icon inside)
+   Wraps p-inputtext, positions icon on the left
+════════════════════════════════════════════════ */
+.p-iconfield {
+  width: 100%;
+
+  .p-inputtext {
+    padding-left: 2.5rem !important;
+  }
+
+  .p-inputicon {
+    color: #84858C !important;
+    font-size: 0.9rem;
+  }
 }
 
 /* ════════════════════════════════════════════════

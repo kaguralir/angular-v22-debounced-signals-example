@@ -35,6 +35,11 @@
 .mt-8        { margin-top: 8px; }
 .mb-8        { margin-bottom: 8px; }
 
+/* ── Secondary button: shrink to content, don't stretch in column flex ── */
+.btn-inline {
+  align-self: flex-start;
+}
+
 /* ── Tags row ── */
 .tags-row {
   display: flex;
@@ -43,22 +48,9 @@
   align-items: center;
 }
 
-/* ── Search wrapper (icon overlay over p-inputtext) ── */
-.search-wrapper {
-  position: relative;
-
-  .search-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #84858C;
-    font-size: 0.9rem;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  input { padding-left: 44px !important; }
+/* ── Search: p-iconfield wrapper takes full width ── */
+.search-field {
+  width: 100%;
 }
 
 /* ── Onglets — custom tab bar (not a PrimeNG component) ── */
@@ -71,11 +63,12 @@
 }
 
 .tab {
-  flex: 1;
+  /* size to content — no flex: 1 — so long labels aren't clipped */
+  flex-shrink: 0;
   border: none;
   background: transparent;
   border-radius: 12px;
-  padding: 11px 14px;
+  padding: 11px 18px;
   font-family: inherit;
   font-size: 0.9rem;
   font-weight: 500;
