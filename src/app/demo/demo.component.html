@@ -1,0 +1,239 @@
+<div class="demo-page">
+
+  <!-- ══════════════════════════════════════
+       BUTTONS
+  ══════════════════════════════════════ -->
+  <section class="demo-section">
+    <p class="section-label">Buttons / primary</p>
+    <p-button label="Scanner un client" icon="pi pi-qrcode" styleClass="btn-primary" />
+  </section>
+
+  <section class="demo-section">
+    <p class="section-label">Buttons / secondary</p>
+    <div class="btn-inline">
+      <p-button label="Vente en direct" [outlined]="true" />
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <p class="section-label">Buttons / disabled</p>
+    <p-button label="Scanner un client" icon="pi pi-qrcode" styleClass="btn-primary" [disabled]="true" />
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SEARCH
+  ══════════════════════════════════════ -->
+  <section class="demo-section">
+    <p class="section-label">Search</p>
+    <p-iconfield>
+      <p-inputicon class="pi pi-search" />
+      <input pInputText type="text" placeholder="Chercher un client..." [(ngModel)]="searchQuery" variant="filled" fluid />
+    </p-iconfield>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       TAGS
+  ══════════════════════════════════════ -->
+  <section class="demo-section">
+    <p class="section-label">Tags</p>
+    <div class="tags-row">
+      <p-tag value="Modifiée"   severity="secondary" />
+      <p-tag value="En cours"   severity="info" />
+      <p-tag value="Réglée"     severity="success" />
+      <p-tag value="Non réglée" severity="danger" styleClass="tag-danger-outlined" />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       ONGLETS
+  ══════════════════════════════════════ -->
+  <section class="demo-section">
+    <p class="section-label">Onglets</p>
+    <div class="tab-bar">
+      <button class="tab" [class.active]="activeTab() === 'total'"    (click)="activeTab.set('total')">Préparation totale</button>
+      <button class="tab" [class.active]="activeTab() === 'en-cours'" (click)="activeTab.set('en-cours')">En cours</button>
+      <!-- tabs size to content, not forced equal-width -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BLOC / ÉTAT
+  ══════════════════════════════════════ -->
+  <section class="demo-section">
+    <p class="section-label">Bloc / état</p>
+    <div class="status-bloc">
+      <i class="pi pi-qrcode status-icon"></i>
+      <div>
+        <div class="status-title">Prête à être scannée</div>
+        <div class="status-sub">4 produits à valider</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       EMPLACEMENT / DROP
+  ══════════════════════════════════════ -->
+  <section class="demo-section">
+    <p class="section-label">Emplacement (CTA – drop)</p>
+    <span class="field-label">emplacement</span>
+    <p-select [options]="locationOptions" [(ngModel)]="selectedLocation" styleClass="loc-select">
+      <ng-template pTemplate="selectedItem" let-v>
+        <div class="loc-item"><i class="pi pi-map-marker"></i><span>{{ v }}</span></div>
+      </ng-template>
+      <ng-template pTemplate="item" let-o>{{ o }}</ng-template>
+    </p-select>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BLOC / DETAILS PRODUIT
+  ══════════════════════════════════════ -->
+  <section class="demo-section">
+    <p class="section-label">Bloc / details produit</p>
+    <div class="card">
+      <p-tag value="Qte modifiée" severity="secondary" styleClass="mb-8" />
+      <div class="card-row">
+        <span class="text-bold">Sac de ciment Portland</span>
+        <div class="qty-group">
+          <span class="qty-orig">x1</span>
+          <span class="text-bold">x10</span>
+        </div>
+      </div>
+      <div class="card-row mt-6">
+        <span class="text-muted">EU440</span>
+        <p-select [options]="locationOptions" [(ngModel)]="selectedLocation" styleClass="card-loc-select">
+          <ng-template pTemplate="selectedItem" let-v>
+            <div class="loc-item"><i class="pi pi-map-marker"></i><span>{{ v }}</span></div>
+          </ng-template>
+          <ng-template pTemplate="item" let-o>{{ o }}</ng-template>
+        </p-select>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BLOC / COMMANDE GLOBALE
+  ══════════════════════════════════════ -->
+  <section class="demo-section">
+    <p class="section-label">Bloc / commande globale</p>
+    <div class="group-container">
+
+      <!-- plain -->
+      <div class="card">
+        <div class="card-row">
+          <span class="text-muted">08:15</span>
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+        <div class="text-bold mt-6">Dupont Construction · CLNT0001</div>
+        <div class="card-row mt-6">
+          <span class="text-muted"><i class="pi pi-box mr-4"></i>4 produits</span>
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+      </div>
+
+      <!-- en cours -->
+      <div class="card">
+        <div class="card-row">
+          <span class="dot-blue"></span>
+          <span class="text-muted">08:15</span>
+          <p-tag value="En cours" severity="info" styleClass="ml-8" />
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+        <div class="text-bold mt-6">Dupont Construction · CLNT0001</div>
+        <div class="card-row mt-6">
+          <span class="text-muted"><i class="pi pi-box mr-4"></i>4 produits</span>
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+      </div>
+
+      <!-- modifiée -->
+      <div class="card">
+        <div class="card-row">
+          <span class="text-muted">08:15</span>
+          <p-tag value="Modifiée" severity="secondary" styleClass="ml-8" />
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+        <div class="text-bold mt-6">Dupont Construction · CLNT0001</div>
+        <div class="card-row mt-6">
+          <span class="text-muted"><i class="pi pi-box mr-4"></i>4 produits</span>
+          <span class="text-bold ml-auto">A12</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BLOC / SÉLECTION PRODUITS
+  ══════════════════════════════════════ -->
+  <section class="demo-section">
+    <p class="section-label">Bloc / sélection produits</p>
+    <div class="group-container">
+
+      <!-- unchecked, no tag -->
+      <div class="card sel-card">
+        <div class="card-row">
+          <p-checkbox [(ngModel)]="checked1" [binary]="true" />
+          <span class="text-bold ml-8">Sac de ciment Portland</span>
+          <div class="qty-group ml-auto">
+            <span class="text-bold">x10</span>
+            <i class="pi pi-pencil edit-icon"></i>
+          </div>
+        </div>
+        <div class="card-row mt-8">
+          <span class="text-muted">PROD-001</span>
+          <div class="loc-item ml-auto text-muted"><i class="pi pi-map-marker"></i><span>Allée A-03 (4)</span></div>
+        </div>
+      </div>
+
+      <!-- unchecked, with tag (Qte modifiée) -->
+      <div class="card sel-card">
+        <p-tag value="Qte modifiée" severity="secondary" styleClass="mb-8" />
+        <div class="card-row">
+          <p-checkbox [(ngModel)]="checked2" [binary]="true" />
+          <span class="text-bold ml-8">Sac de ciment Portland</span>
+          <div class="qty-group ml-auto">
+            <span class="qty-orig">x2</span>
+            <span class="text-bold">x10</span>
+            <i class="pi pi-pencil edit-icon"></i>
+          </div>
+        </div>
+        <div class="card-row mt-8">
+          <span class="text-muted">PROD-001</span>
+          <div class="loc-item ml-auto text-muted"><i class="pi pi-map-marker"></i><span>Allée A-03</span></div>
+        </div>
+      </div>
+
+      <!-- checked, no tag -->
+      <div class="card sel-card sel-card--checked">
+        <div class="card-row">
+          <p-checkbox [(ngModel)]="checked3" [binary]="true" />
+          <span class="text-bold ml-8">Sac de ciment Portland</span>
+          <span class="text-bold ml-auto">x10</span>
+        </div>
+        <div class="card-row mt-8">
+          <span class="text-muted">PROD-001</span>
+          <div class="loc-item ml-auto text-muted"><i class="pi pi-map-marker"></i><span>Allée A-03</span></div>
+        </div>
+      </div>
+
+      <!-- checked, with tag -->
+      <div class="card sel-card sel-card--checked">
+        <p-tag value="Qte modifiée" severity="secondary" styleClass="mb-8" />
+        <div class="card-row">
+          <p-checkbox [(ngModel)]="checked4" [binary]="true" />
+          <span class="text-bold ml-8">Sac de ciment Portland</span>
+          <div class="qty-group ml-auto">
+            <span class="qty-orig">x2</span>
+            <span class="text-bold">x10</span>
+          </div>
+        </div>
+        <div class="card-row mt-8">
+          <span class="text-muted">PROD-001</span>
+          <div class="loc-item ml-auto text-muted"><i class="pi pi-map-marker"></i><span>Allée A-03</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>

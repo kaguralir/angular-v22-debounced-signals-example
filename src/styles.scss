@@ -1,26 +1,172 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&display=swap');
+@import "primeicons/primeicons.css";
 
-:root {
-    --bg:             #111110;
-    --surface:        #1c1c1a;
-    --border:         #2e2e2b;
-    --accent:         #e8e8e4;
-    --text-primary:   #e8e8e4;
-    --text-secondary: #a8a8a0;
-    --text-muted:     #62625a;
-    --debug-bg:       #161614;
+/* ─── Force light mode — prevents OS dark mode from affecting PrimeNG ── */
+html {
+  color-scheme: only light;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text-primary);
-    font-family: 'Geist Mono', 'Fira Code', 'Cascadia Code', monospace;
-    -webkit-font-smoothing: antialiased;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #F5F5F6 !important;
+  color: #1D1D1D !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ════════════════════════════════════════════════
+   BUTTON
+   Primary  → full-width, orange fill, 14px radius
+   Outlined → auto-width, orange border + text, no fill
+════════════════════════════════════════════════ */
+.p-button {
+  border-radius: 14px !important;
+  padding: 14px 20px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  width: 100% !important;
+  justify-content: center;
+  gap: 10px;
+}
+
+.p-button.p-button-outlined {
+  width: auto !important;
+  background: transparent !important;
+  border: 1.5px solid #F58220 !important;
+  color: #E66410 !important;
+  padding: 13px 20px !important;
+}
+
+.p-button:disabled,
+.p-button.p-disabled {
+  background: #CFD0D2 !important;
+  border-color: #CFD0D2 !important;
+  color: #696A71 !important;
+  opacity: 1 !important;
+}
+
+/* ════════════════════════════════════════════════
+   INPUT TEXT
+   Rounded, light-grey bg, no border, proper height
+════════════════════════════════════════════════ */
+.p-inputtext {
+  border-radius: 14px !important;
+  border: none !important;
+  outline: none !important;
+  background: #E6E6E7 !important;
+  padding: 14px 16px !important;
+  font-size: 0.93rem !important;
+  color: #1D1D1D !important;
+  width: 100%;
+  box-shadow: none !important;
+  font-family: inherit;
+  transition: box-shadow 0.15s;
+
+  &::placeholder { color: #84858C !important; }
+  &:focus { box-shadow: 0 0 0 2px #F58220 !important; }
+}
+
+/* ════════════════════════════════════════════════
+   ICON FIELD (search input with icon inside)
+   Wraps p-inputtext, positions icon on the left
+════════════════════════════════════════════════ */
+.p-iconfield {
+  width: 100%;
+
+  .p-inputtext {
+    padding-left: 2.5rem !important;
+  }
+
+  .p-inputicon {
+    color: #84858C !important;
+    font-size: 0.9rem;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   SELECT
+   Same look as input (rounded grey, no border)
+════════════════════════════════════════════════ */
+.p-select {
+  border-radius: 14px !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: #E6E6E7 !important;
+  font-family: inherit;
+}
+
+.p-select-overlay {
+  border-radius: 14px !important;
+  border: none !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12) !important;
+  overflow: hidden;
+  background: #fff !important;
+}
+
+/* ════════════════════════════════════════════════
+   CARD
+   White, 16px radius, subtle shadow, no extra padding
+════════════════════════════════════════════════ */
+.p-card {
+  border-radius: 16px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  background: #ffffff !important;
+  color: #1D1D1D !important;
+}
+
+.p-card .p-card-body {
+  padding: 14px 16px !important;
+  gap: 0 !important;
+}
+
+.p-card .p-card-content {
+  padding: 0 !important;
+}
+
+/* ════════════════════════════════════════════════
+   TAG
+   Small pill, 6px radius, tight padding, per-severity colors
+════════════════════════════════════════════════ */
+.p-tag {
+  border-radius: 6px !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  padding: 3px 8px !important;
+}
+
+.p-tag.p-tag-secondary {
+  background: #FEF08A !important;
+  color: #78350F !important;
+}
+
+.p-tag.p-tag-info {
+  background: #BFDBFE !important;
+  color: #1e3a5f !important;
+}
+
+.p-tag.p-tag-success {
+  background: #27AB5E !important;
+  color: #ffffff !important;
+}
+
+.p-tag.p-tag-danger {
+  background: transparent !important;
+  color: #FF3B3B !important;
+  border: 1.5px solid #FF3B3B !important;
+}
+
+/* ════════════════════════════════════════════════
+   CHECKBOX
+   Rounded square, green when checked
+════════════════════════════════════════════════ */
+.p-checkbox .p-checkbox-box {
+  border-radius: 6px !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.p-checkbox.p-checkbox-checked .p-checkbox-box {
+  background: #27AB5E !important;
+  border-color: #27AB5E !important;
 }

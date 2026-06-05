@@ -1,0 +1,165 @@
+/* ─────────────────────────────────────────────────
+   DEMO PAGE — layout and custom non-PrimeNG elements
+   No PrimeNG class overrides here.
+───────────────────────────────────────────────── */
+
+.demo-page {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 36px 20px 80px;
+}
+
+.demo-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #84858C;
+  margin: 0 0 10px;
+}
+
+/* ── Utility helpers ── */
+.card-row    { display: flex; align-items: center; gap: 6px; }
+.text-bold   { font-weight: 700; font-size: 0.93rem; color: #1D1D1D; }
+.text-muted  { color: #696A71; font-size: 0.85rem; }
+.ml-auto     { margin-left: auto; }
+.ml-8        { margin-left: 8px; }
+.mr-4        { margin-right: 4px; }
+.mt-6        { margin-top: 6px; }
+.mt-8        { margin-top: 8px; }
+.mb-8        { margin-bottom: 8px; }
+
+/* ── Secondary button: shrink to content, don't stretch in column flex ── */
+.btn-inline {
+  align-self: flex-start;
+}
+
+/* ── Tags row ── */
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ── Onglets — custom tab bar (not a PrimeNG component) ── */
+.tab-bar {
+  display: flex;
+  background: #E6E6E7;
+  border-radius: 16px;
+  padding: 4px;
+  gap: 3px;
+}
+
+.tab {
+  /* size to content — no flex: 1 — so long labels aren't clipped */
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  padding: 11px 18px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #696A71;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+
+  &.active {
+    background: #F58220;
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+/* ── Bloc état — custom div (not a PrimeNG component) ── */
+.status-bloc {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #BBDEFB;
+  border-radius: 16px;
+  padding: 16px 20px;
+
+  .status-icon  { font-size: 1.8rem; color: #1D1D1D; }
+  .status-title { font-weight: 700; font-size: 0.95rem; color: #1D1D1D; }
+  .status-sub   { font-size: 0.82rem; color: #4D4D51; margin-top: 2px; }
+}
+
+/* ── Location field label ── */
+.field-label {
+  font-size: 0.82rem;
+  color: #84858C;
+  margin-bottom: 2px;
+}
+
+/* ── loc-item (icon + text pair used inside selects and cards) ── */
+.loc-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.88rem;
+
+  .pi-map-marker { color: #84858C; font-size: 0.82rem; }
+}
+
+/* ── Generic white card (used directly in demo, not p-card) ── */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Group container (dashed border wrapping multiple cards) ── */
+.group-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1.5px dashed #a5b4fc;
+  border-radius: 18px;
+  padding: 10px;
+}
+
+/* ── Qty helpers ── */
+.qty-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.qty-orig {
+  color: #84858C;
+  font-size: 0.82rem;
+  text-decoration: line-through;
+}
+
+.edit-icon {
+  color: #F58220;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+/* ── Blue dot indicator (En cours) ── */
+.dot-blue {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2196F3;
+  flex-shrink: 0;
+}
+
+/* ── Selection card checked state ── */
+.sel-card--checked {
+  background: #F0FAF4;
+  border: 1.5px solid #27AB5E;
+}
