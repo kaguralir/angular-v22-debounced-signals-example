@@ -1,0 +1,114 @@
+<div class="demo-page">
+  <h1 class="demo-title">UI Components Demo</h1>
+
+  <!-- Buttons -->
+  <section class="demo-section">
+    <h2 class="section-title">Buttons / primary</h2>
+    <div class="demo-row narrow">
+      <p-button label="Scanner un client" icon="pi pi-qrcode" severity="primary" />
+    </div>
+
+    <h2 class="section-title">Buttons / secondary</h2>
+    <div class="demo-row narrow">
+      <p-button label="Vente en direct" severity="secondary" [outlined]="true" styleClass="outlined-secondary" />
+    </div>
+
+    <h2 class="section-title">Buttons / disabled</h2>
+    <div class="demo-row narrow">
+      <p-button label="Scanner un client" icon="pi pi-qrcode" [disabled]="true" />
+    </div>
+  </section>
+
+  <!-- Search input -->
+  <section class="demo-section">
+    <h2 class="section-title">Search</h2>
+    <div class="demo-row narrow">
+      <div class="search-wrapper">
+        <i class="pi pi-search search-icon"></i>
+        <input
+          pInputText
+          type="text"
+          placeholder="Chercher un client..."
+          class="search-input"
+          [value]="searchQuery()"
+          (input)="searchQuery.set($any($event.target).value)"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Tags -->
+  <section class="demo-section">
+    <h2 class="section-title">Tags</h2>
+    <div class="demo-row">
+      @for (tag of tags; track tag.label) {
+        <p-tag [value]="tag.label" [severity]="tag.severity" />
+      }
+    </div>
+  </section>
+
+  <!-- Onglets (tabs) -->
+  <section class="demo-section">
+    <h2 class="section-title">Onglets</h2>
+    <div class="demo-row narrow">
+      <app-tab-bar [tabs]="tabs" [(activeTab)]="activeTab" />
+    </div>
+    <p class="demo-hint">Active: <strong>{{ activeTab() }}</strong></p>
+  </section>
+
+  <!-- Bloc / état -->
+  <section class="demo-section">
+    <h2 class="section-title">Bloc / état</h2>
+    <div class="demo-row narrow">
+      <app-status-bloc
+        title="Prête à être scannée"
+        subtitle="4 produits à valider"
+      />
+    </div>
+  </section>
+
+  <!-- Location dropdown -->
+  <section class="demo-section">
+    <h2 class="section-title">Emplacement (CTA – drop)</h2>
+    <div class="demo-row narrow">
+      <app-location-select
+        label="emplacement"
+        [options]="locationOptions"
+        [(value)]="selectedLocation"
+      />
+    </div>
+    <p class="demo-hint">Selected: <strong>{{ selectedLocation() }}</strong></p>
+  </section>
+
+  <!-- Bloc / details produit -->
+  <section class="demo-section">
+    <h2 class="section-title">Bloc / details produit</h2>
+    <div class="demo-row narrow">
+      <app-product-detail-card [product]="productDetail" />
+    </div>
+  </section>
+
+  <!-- Bloc / commande globale -->
+  <section class="demo-section">
+    <h2 class="section-title">Bloc / commande globale</h2>
+    <div class="order-list">
+      @for (order of orders; track order.time + order.status) {
+        <app-order-card [order]="order" />
+      }
+    </div>
+  </section>
+
+  <!-- Bloc / selection produits -->
+  <section class="demo-section">
+    <h2 class="section-title">Bloc / sélection produits</h2>
+    <div class="selection-list">
+      @for (prod of selectionProducts; track $index) {
+        <app-product-selection-card
+          [product]="prod"
+          [checked]="checkedStates()[$index]"
+          (checkedChange)="updateChecked($index, $event)"
+        />
+      }
+    </div>
+  </section>
+</div>

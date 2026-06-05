@@ -1,26 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&display=swap');
+@import "primeicons/primeicons.css";
 
 :root {
-    --bg:             #111110;
-    --surface:        #1c1c1a;
-    --border:         #2e2e2b;
-    --accent:         #e8e8e4;
-    --text-primary:   #e8e8e4;
-    --text-secondary: #a8a8a0;
-    --text-muted:     #62625a;
-    --debug-bg:       #161614;
+  --padding-x-pwa: 16px;
+  --max-width-pwa: 480px;
+  color-scheme: light;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text-primary);
-    font-family: 'Geist Mono', 'Fira Code', 'Cascadia Code', monospace;
-    -webkit-font-smoothing: antialiased;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #F5F5F6;
+  color: #1D1D1D;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* PrimeNG global overrides */
+.p-button {
+  width: 100%;
+  font-weight: 600;
+}
+
+.p-button.p-component:disabled {
+  background-color: var(--p-surface-200);
+  border-color: var(--p-surface-200);
+  color: var(--p-surface-600);
+  opacity: 1;
+}
+
+.p-select {
+  font-weight: 600;
+
+  .p-overlay-content {
+    margin-top: 6px;
+  }
+
+  .p-select-option-selected {
+    font-weight: 600;
+  }
+}
+
+.p-inputtext {
+  &.p-inputtext-lg {
+    font-size: 1.125rem;
+
+    &::placeholder {
+      font-size: 1.125rem;
+    }
+  }
+}
+
+.p-tag {
+  padding: 3px 8px;
 }

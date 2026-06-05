@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { SearchComponent } from './search/search.component';
+import { DemoComponent } from './demo/demo.component';
 
 @Component({
   selector: 'app-root',
-  imports: [SearchComponent],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+  imports: [DemoComponent],
+  template: `<app-demo />`,
 })
 export class AppComponent {}
