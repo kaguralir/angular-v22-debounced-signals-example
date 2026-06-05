@@ -1,8 +1,8 @@
 @import "primeicons/primeicons.css";
 
-/* ─── Base ──────────────────────────────────────── */
-:root {
-  color-scheme: light;
+/* ─── Force light mode — prevents OS dark mode from affecting PrimeNG ── */
+html {
+  color-scheme: only light;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -10,28 +10,30 @@
 body {
   font-family: 'Roboto', 'Segoe UI', sans-serif;
   margin: 0;
-  background: #F5F5F6;
-  color: #1D1D1D;
+  background: #F5F5F6 !important;
+  color: #1D1D1D !important;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Button ─────────────────────────────────────
-   Primary: full-width, orange fill
-   Outlined (secondary style): auto-width, orange border
-─────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════
+   BUTTON
+   Primary  → full-width, orange fill, 14px radius
+   Outlined → auto-width, orange border + text, no fill
+════════════════════════════════════════════════ */
 .p-button {
-  width: 100%;
-  padding: 15px 20px;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 14px;
+  border-radius: 14px !important;
+  padding: 14px 20px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  width: 100% !important;
   justify-content: center;
   gap: 10px;
 }
 
 .p-button.p-button-outlined {
-  width: auto;
-  padding: 13px 20px;
+  width: auto !important;
+  background: transparent !important;
+  border-width: 1.5px !important;
 }
 
 .p-button:disabled,
@@ -42,80 +44,110 @@ body {
   opacity: 1 !important;
 }
 
-/* ─── InputText ──────────────────────────────────
-   Rounded, light grey bg, proper height
-─────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════
+   INPUT TEXT
+   Rounded, light-grey bg, no border, proper height
+════════════════════════════════════════════════ */
 .p-inputtext {
-  border-radius: 14px;
-  border: none;
-  background: #E6E6E7;
-  padding: 14px 16px;
-  font-size: 0.93rem;
-  color: #1D1D1D;
+  border-radius: 14px !important;
+  border: none !important;
+  outline: none !important;
+  background: #E6E6E7 !important;
+  padding: 14px 16px !important;
+  font-size: 0.93rem !important;
+  color: #1D1D1D !important;
   width: 100%;
-  box-shadow: none;
+  box-shadow: none !important;
   font-family: inherit;
+  transition: box-shadow 0.15s;
 
-  &::placeholder { color: #84858C; }
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #F58220;
-    border-color: transparent;
-  }
+  &::placeholder { color: #84858C !important; }
+  &:focus { box-shadow: 0 0 0 2px #F58220 !important; }
 }
 
-/* ─── Select ─────────────────────────────────────
-   Rounded, light grey bg (matches InputText)
-─────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════
+   SELECT
+   Same look as input (rounded grey, no border)
+════════════════════════════════════════════════ */
 .p-select {
-  border-radius: 14px;
-  border: none;
-  background: #E6E6E7;
-  box-shadow: none;
+  border-radius: 14px !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: #E6E6E7 !important;
   font-family: inherit;
 }
 
 .p-select-overlay {
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  border: none;
+  border-radius: 14px !important;
+  border: none !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12) !important;
   overflow: hidden;
+  background: #fff !important;
 }
 
-/* ─── Card ───────────────────────────────────────
-   White, rounded 16px, subtle shadow
-─────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════
+   CARD
+   White, 16px radius, subtle shadow, no extra padding
+════════════════════════════════════════════════ */
 .p-card {
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  background: #ffffff;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  background: #ffffff !important;
+  color: #1D1D1D !important;
 }
 
 .p-card .p-card-body {
-  padding: 14px 16px;
-  gap: 0;
+  padding: 14px 16px !important;
+  gap: 0 !important;
 }
 
 .p-card .p-card-content {
-  padding: 0;
+  padding: 0 !important;
 }
 
-/* ─── Tag ────────────────────────────────────────
-   Small pill, 6px radius, bold, tight padding
-─────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════
+   TAG
+   Small pill, 6px radius, tight padding, per-severity colors
+════════════════════════════════════════════════ */
 .p-tag {
-  border-radius: 6px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 3px 8px;
-  display: inline-flex;
+  border-radius: 6px !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  padding: 3px 8px !important;
 }
 
-/* ─── Checkbox ───────────────────────────────────
-   Rounded square (6px), green when checked
-─────────────────────────────────────────────────── */
+.p-tag.p-tag-secondary {
+  background: #FEF08A !important;
+  color: #78350F !important;
+}
+
+.p-tag.p-tag-info {
+  background: #BFDBFE !important;
+  color: #1e3a5f !important;
+}
+
+.p-tag.p-tag-success {
+  background: #27AB5E !important;
+  color: #ffffff !important;
+}
+
+.p-tag.p-tag-danger {
+  background: transparent !important;
+  color: #FF3B3B !important;
+  border: 1.5px solid #FF3B3B !important;
+}
+
+/* ════════════════════════════════════════════════
+   CHECKBOX
+   Rounded square, green when checked
+════════════════════════════════════════════════ */
 .p-checkbox .p-checkbox-box {
-  border-radius: 6px;
-  width: 20px;
-  height: 20px;
+  border-radius: 6px !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.p-checkbox.p-checkbox-checked .p-checkbox-box {
+  background: #27AB5E !important;
+  border-color: #27AB5E !important;
 }
