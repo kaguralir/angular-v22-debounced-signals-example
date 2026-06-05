@@ -1,16 +1,11 @@
 @import "primeicons/primeicons.css";
 
+/* ─── Base ──────────────────────────────────────── */
 :root {
-  --padding-x-pwa: 16px;
-  --max-width-pwa: 480px;
   color-scheme: light;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
   font-family: 'Roboto', 'Segoe UI', sans-serif;
@@ -20,41 +15,107 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* PrimeNG global overrides */
+/* ─── Button ─────────────────────────────────────
+   Primary: full-width, orange fill
+   Outlined (secondary style): auto-width, orange border
+─────────────────────────────────────────────────── */
 .p-button {
   width: 100%;
-  font-weight: 600;
+  padding: 15px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 14px;
+  justify-content: center;
+  gap: 10px;
 }
 
-.p-button.p-component:disabled {
-  background-color: var(--p-surface-200);
-  border-color: var(--p-surface-200);
-  color: var(--p-surface-600);
-  opacity: 1;
+.p-button.p-button-outlined {
+  width: auto;
+  padding: 13px 20px;
 }
 
-.p-select {
-  font-weight: 600;
-
-  .p-overlay-content {
-    margin-top: 6px;
-  }
-
-  .p-select-option-selected {
-    font-weight: 600;
-  }
+.p-button:disabled,
+.p-button.p-disabled {
+  background: #CFD0D2 !important;
+  border-color: #CFD0D2 !important;
+  color: #696A71 !important;
+  opacity: 1 !important;
 }
 
+/* ─── InputText ──────────────────────────────────
+   Rounded, light grey bg, proper height
+─────────────────────────────────────────────────── */
 .p-inputtext {
-  &.p-inputtext-lg {
-    font-size: 1.125rem;
+  border-radius: 14px;
+  border: none;
+  background: #E6E6E7;
+  padding: 14px 16px;
+  font-size: 0.93rem;
+  color: #1D1D1D;
+  width: 100%;
+  box-shadow: none;
+  font-family: inherit;
 
-    &::placeholder {
-      font-size: 1.125rem;
-    }
+  &::placeholder { color: #84858C; }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #F58220;
+    border-color: transparent;
   }
 }
 
+/* ─── Select ─────────────────────────────────────
+   Rounded, light grey bg (matches InputText)
+─────────────────────────────────────────────────── */
+.p-select {
+  border-radius: 14px;
+  border: none;
+  background: #E6E6E7;
+  box-shadow: none;
+  font-family: inherit;
+}
+
+.p-select-overlay {
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  border: none;
+  overflow: hidden;
+}
+
+/* ─── Card ───────────────────────────────────────
+   White, rounded 16px, subtle shadow
+─────────────────────────────────────────────────── */
+.p-card {
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+}
+
+.p-card .p-card-body {
+  padding: 14px 16px;
+  gap: 0;
+}
+
+.p-card .p-card-content {
+  padding: 0;
+}
+
+/* ─── Tag ────────────────────────────────────────
+   Small pill, 6px radius, bold, tight padding
+─────────────────────────────────────────────────── */
 .p-tag {
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
   padding: 3px 8px;
+  display: inline-flex;
+}
+
+/* ─── Checkbox ───────────────────────────────────
+   Rounded square (6px), green when checked
+─────────────────────────────────────────────────── */
+.p-checkbox .p-checkbox-box {
+  border-radius: 6px;
+  width: 20px;
+  height: 20px;
 }

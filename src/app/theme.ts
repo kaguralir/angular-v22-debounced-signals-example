@@ -94,14 +94,12 @@ export const PrepngoThemePreset = definePreset(Aura, {
         },
       },
     },
-    progressspinner: {
+    checkbox: {
       colorScheme: {
         light: {
           root: {
-            colorOne:   '{primary.500}',
-            colorTwo:   '{primary.500}',
-            colorThree: '{primary.500}',
-            colorFour:  '{primary.500}',
+            checkedBackground: '#27AB5E',
+            checkedBorderColor: '#27AB5E',
           },
         },
       },

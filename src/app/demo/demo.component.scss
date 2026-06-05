@@ -1,16 +1,18 @@
-/* ─── Page layout ─────────────────────────────── */
+/* ─────────────────────────────────────────────────
+   DEMO PAGE — layout and custom non-PrimeNG elements
+   No PrimeNG class overrides here.
+───────────────────────────────────────────────── */
+
 .demo-page {
   max-width: 440px;
   margin: 0 auto;
   padding: 36px 20px 80px;
-  background: #F5F5F6;
-  min-height: 100vh;
 }
 
 .demo-section {
-  margin-bottom: 32px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 32px;
 }
 
 .section-label {
@@ -22,55 +24,26 @@
   margin: 0 0 10px;
 }
 
-/* ─── Utility ──────────────────────────────────── */
-.text-bold  { font-weight: 700; font-size: 0.93rem; color: #1D1D1D; }
-.text-muted { color: #696A71; font-size: 0.85rem; }
-.mt-6  { margin-top: 6px; }
-.mt-8  { margin-top: 8px; }
-.mb-8  { margin-bottom: 8px; }
-.ml-4  { margin-left: 4px; }
-.ml-8  { margin-left: 8px; }
-.ml-auto { margin-left: auto; }
-.mr-4  { margin-right: 4px; }
+/* ── Utility helpers ── */
+.card-row    { display: flex; align-items: center; gap: 6px; }
+.text-bold   { font-weight: 700; font-size: 0.93rem; color: #1D1D1D; }
+.text-muted  { color: #696A71; font-size: 0.85rem; }
+.ml-auto     { margin-left: auto; }
+.ml-8        { margin-left: 8px; }
+.mr-4        { margin-right: 4px; }
+.mt-6        { margin-top: 6px; }
+.mt-8        { margin-top: 8px; }
+.mb-8        { margin-bottom: 8px; }
 
-/* ─── Buttons ──────────────────────────────────── */
-:host ::ng-deep {
-  .btn-primary.p-button {
-    width: 100%;
-    background: #F58220;
-    border-color: #F58220;
-    border-radius: 14px;
-    padding: 15px 20px;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #fff;
-    justify-content: center;
-
-    &:hover:not(:disabled) { background: #E66410; border-color: #E66410; }
-    &:disabled {
-      background: #CFD0D2 !important;
-      border-color: #CFD0D2 !important;
-      color: #696A71 !important;
-      opacity: 1 !important;
-    }
-  }
-
-  .btn-secondary.p-button {
-    width: auto;
-    background: transparent;
-    border: 2px solid #F58220;
-    border-radius: 14px;
-    padding: 12px 20px;
-    font-size: 0.93rem;
-    font-weight: 700;
-    color: #E66410;
-    align-self: flex-start;
-
-    &:hover { background: #FFF8ED; }
-  }
+/* ── Tags row ── */
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 
-/* ─── Search ───────────────────────────────────── */
+/* ── Search wrapper (icon overlay over p-inputtext) ── */
 .search-wrapper {
   position: relative;
 
@@ -85,40 +58,10 @@
     z-index: 1;
   }
 
-  .search-input {
-    width: 100%;
-    padding: 14px 16px 14px 44px !important;
-    border-radius: 14px !important;
-    border: none !important;
-    background: #E6E6E7 !important;
-    color: #1D1D1D;
-    font-size: 0.93rem;
-    box-shadow: none !important;
-
-    &::placeholder { color: #84858C; }
-    &:focus { box-shadow: 0 0 0 2px #F58220 !important; outline: none !important; }
-  }
+  input { padding-left: 44px !important; }
 }
 
-/* ─── Tags ─────────────────────────────────────── */
-.tags-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-:host ::ng-deep {
-  /* tag-danger outlined style */
-  .tag-danger-outlined.p-tag {
-    background: transparent !important;
-    color: #FF3B3B !important;
-    border: 1.5px solid #FF3B3B;
-    box-sizing: border-box;
-  }
-}
-
-/* ─── Onglets ──────────────────────────────────── */
+/* ── Onglets — custom tab bar (not a PrimeNG component) ── */
 .tab-bar {
   display: flex;
   background: #E6E6E7;
@@ -138,7 +81,7 @@
   font-weight: 500;
   color: #696A71;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s, font-weight 0.1s;
+  transition: background 0.15s, color 0.15s;
   white-space: nowrap;
 
   &.active {
@@ -148,7 +91,7 @@
   }
 }
 
-/* ─── Bloc / état ──────────────────────────────── */
+/* ── Bloc état — custom div (not a PrimeNG component) ── */
 .status-bloc {
   display: flex;
   align-items: center;
@@ -157,54 +100,29 @@
   border-radius: 16px;
   padding: 16px 20px;
 
-  .status-icon { font-size: 1.8rem; color: #1D1D1D; }
+  .status-icon  { font-size: 1.8rem; color: #1D1D1D; }
   .status-title { font-weight: 700; font-size: 0.95rem; color: #1D1D1D; }
   .status-sub   { font-size: 0.82rem; color: #4D4D51; margin-top: 2px; }
 }
 
-/* ─── Location / drop ──────────────────────────── */
+/* ── Location field label ── */
 .field-label {
   font-size: 0.82rem;
   color: #84858C;
   margin-bottom: 2px;
 }
 
+/* ── loc-item (icon + text pair used inside selects and cards) ── */
 .loc-item {
   display: flex;
   align-items: center;
   gap: 5px;
   font-size: 0.88rem;
-  color: #1D1D1D;
 
   .pi-map-marker { color: #84858C; font-size: 0.82rem; }
 }
 
-:host ::ng-deep {
-  .loc-select.p-select {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 4px 0;
-    min-width: unset;
-
-    .p-select-label { padding: 0; font-size: 0.9rem; font-weight: 400; }
-    .p-select-dropdown { color: #84858C; }
-  }
-
-  /* loc select inside a card (smaller, right-aligned) */
-  .card-loc-select.p-select {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0;
-    min-width: unset;
-
-    .p-select-label { padding: 0; font-size: 0.85rem; font-weight: 400; }
-    .p-select-dropdown { color: #84858C; width: 18px; }
-  }
-}
-
-/* ─── Generic card (white rounded card) ────────── */
+/* ── Generic white card (used directly in demo, not p-card) ── */
 .card {
   background: #fff;
   border-radius: 16px;
@@ -214,13 +132,7 @@
   flex-direction: column;
 }
 
-.card-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* ─── Group container (dashed border wrapping multiple cards) */
+/* ── Group container (dashed border wrapping multiple cards) ── */
 .group-container {
   display: flex;
   flex-direction: column;
@@ -230,7 +142,7 @@
   padding: 10px;
 }
 
-/* ─── Qty helpers ──────────────────────────────── */
+/* ── Qty helpers ── */
 .qty-group {
   display: flex;
   align-items: center;
@@ -249,7 +161,7 @@
   cursor: pointer;
 }
 
-/* ─── Blue dot (En cours indicator) ───────────── */
+/* ── Blue dot indicator (En cours) ── */
 .dot-blue {
   width: 8px;
   height: 8px;
@@ -258,21 +170,8 @@
   flex-shrink: 0;
 }
 
-/* ─── Selection card ───────────────────────────── */
+/* ── Selection card checked state ── */
 .sel-card--checked {
-  background: #F0FAF4 !important;
+  background: #F0FAF4;
   border: 1.5px solid #27AB5E;
-}
-
-/* ─── Checkbox override ────────────────────────── */
-:host ::ng-deep {
-  .p-checkbox .p-checkbox-box {
-    border-radius: 6px !important;
-    width: 20px;
-    height: 20px;
-  }
-  .p-checkbox.p-checkbox-checked .p-checkbox-box {
-    background: #27AB5E !important;
-    border-color: #27AB5E !important;
-  }
 }
